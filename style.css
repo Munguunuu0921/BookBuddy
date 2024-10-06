@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #F6E4C4;
+  }
+  
+  header .logo img {
+    width: 150px;
+  }
+  
+  header .nav-menu {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  header .nav-menu select {
+    padding: 5px;
+    background-color: #A9A9A9;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  /* Search bar styling */
+  .search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-container input {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  .search-container button {
+    background-color: #e87d12;
+    border: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  .search-container button img {
+    width: 18px;
+    height: 18px;
+  }
+  
+  header .header-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  header .header-icons a {
+    margin-left: 15px;
+  }
+  
+  header .header-icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+.bg-main {
+    background-color: #e87d12;
+    border-radius: 5px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .latest-books {
+    margin-top: 30px;
+  }
+  
+  .latest-books h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F6E4C4;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 220px;
+    margin: 20px auto;
+    border: 3px solid #cba2f1;
+  }
+  
+  .book-cover img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .book-details {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .book-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .book-author,
+  .book-date,
+  .book-price {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .book-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+  }
+  
+  .book-actions a img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .book-actions a {
+    display: inline-block;
+  }
+  
+  .user-circles {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+
+  .user-circle {
+    text-align: center;
+  }
+
+  .user-circle img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+  /* Books Grid */
+.book-section {
+    margin-top: 40px;
+  }
+  
+  .book-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .book-item {
+    width: 18%;
+    text-align: center;
+    background-color: #F6E4C4;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 8px;
+  }
+  
+  .book-item img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .book-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  /* Blog Grid */
+  .blog-grid {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .blog-item {
+    width: 30%;
+    padding: 15px;
+    border: 1px solid #F6E4C4;
+    background-color: #F6E4C4;
+  }
+  
+  .blog-content {
+    padding-top: 10px;
+  }
+  
+  /* Pricing */
+  .pricing-section {
+    margin-top: 40px;
+  }
+  
+  .pricing-grid {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .pricing-item {
+    text-align: center;
+    padding: 20px;
+    background-color: #F6E4C4;
+    border-radius: 10px;
+    width: 30%;
+  }
+  
+  /* Top Members */
+  .top-members {
+    margin-top: 40px;
+  }
+  
+  .member-grid {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .top-member {
+    text-align: center;
+  }
+  
+  .top-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  /* Contact Form */
+  .contact-form {
+    margin-top: 40px;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-form button {
+    padding: 10px;
+    background-color: #F6E4C4;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #F6E4C4;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .footer-content p {
+    margin: 5px 0;
+  }
