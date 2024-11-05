@@ -218,6 +218,10 @@ body {
     background-color: #F6E4C4;
   }
   
+  .blog-item img {
+    width: 100%;
+    height: auto;
+  }
   .blog-content {
     padding-top: 10px;
   }
@@ -238,6 +242,13 @@ body {
     background-color: #F6E4C4;
     border-radius: 10px;
     width: 30%;
+  }
+
+  .pricing-item-text {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
   }
   
   /* Top Members */
@@ -267,20 +278,27 @@ body {
   
   .contact-form form {
     display: flex;
+
     flex-direction: column;
+    background-color: #F6E4C4;
+    border-radius: 10px;
   }
   
   .contact-form input,
   .contact-form textarea {
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
+    
   }
   
   .contact-form button {
     padding: 10px;
-    background-color: #F6E4C4;
+    background-color: #fff;
     border: none;
     cursor: pointer;
+    align-items: right;
+    border-color: grey;
+    width: 120px;
   }
   
   /* Footer */
@@ -295,3 +313,48 @@ body {
   .footer-content p {
     margin: 5px 0;
   }
+
+  /* Circular Navigation Buttons */
+.custom-next, .custom-prev {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e3c9c9; /* Light pink background */
+  color: #7a4b4b; /* Darker color for arrow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  position: absolute;
+  bottom: -30px; /* Position below the slider */
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Position the buttons */
+.custom-prev {
+  left: 50%;
+  transform: translateX(-60px); /* Adjust based on spacing */
+}
+
+.custom-next {
+  right: 50%;
+  transform: translateX(60px); /* Adjust based on spacing */
+}
+
+/* Customize Swiper arrows */
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 18px;
+  color: #7a4b4b;
+}
+
+.custom-next::after {
+  content: '›'; /* Right arrow symbol */
+}
+
+.custom-prev::after {
+  content: '‹'; /* Left arrow symbol */
+}
+
+  

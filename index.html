@@ -3,6 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+      const swiper = new Swiper("#recent-books-slider", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        slidesPerView: 3,
+        spaceBetween: 20,
+        breakpoints: {
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 4 },
+        },
+      });
+    </script>
+
     <title>Book Buddy</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -18,11 +39,11 @@
             <option value="all">Бүгд</option>
             <option value="category1">Номоор</option>
             <option value="category2">Блогоор</option>
-            <option value="category2">Хүмүүсээр</option>
+            <option value="category3">Хүмүүсээр</option>
           </select>
           <input type="text" placeholder="Хайх" />
           <button>
-            <img src="search-icon.png" />
+            <img src="search-icon.png" alt="" />
           </button>
         </div>
       </div>
@@ -79,6 +100,7 @@
 
     <section class="book-section container">
       <h2>Хамгийн сүүлд оруулсан ном</h2>
+      <!-- <div class="swiper-container" id="recent-books-slider"> -->
       <div class="book-grid">
         <div class="book-item">
           <img src="/img/Book.png" />
@@ -156,6 +178,11 @@
           </div>
         </div>
         <!-- Repeat for more books -->
+      </div>
+
+      <div class="swiper-container" id="recent-books-slider">
+        <div class="swiper-button-next custom-next"></div>
+        <div class="swiper-button-prev custom-prev"></div>
       </div>
     </section>
 
@@ -239,13 +266,18 @@
         </div>
         <!-- Repeat for more books -->
       </div>
+
+      <div class="swiper-container" id="recent-books-slider">
+        <div class="swiper-button-next custom-next"></div>
+        <div class="swiper-button-prev custom-prev"></div>
+      </div>
     </section>
 
     <section class="blog-section container">
       <h2>Шинэ Блогууд</h2>
       <div class="blog-grid">
         <div class="blog-item">
-          <img src="blog.png" alt="Blog Post" />
+          <img src="/img/blog.png" alt="Blog Post" />
           <div class="blog-content">
             <h3>Blog Name</h3>
             <p>Blog Date</p>
@@ -262,7 +294,7 @@
           </div>
         </div>
         <div class="blog-item">
-          <img src="blog.png" alt="Blog Post" />
+          <img src="/img/blog.png" alt="Blog Post" />
           <div class="blog-content">
             <h3>Blog Name</h3>
             <p>Blog Date</p>
@@ -279,7 +311,7 @@
           </div>
         </div>
         <div class="blog-item">
-          <img src="blog.png" alt="Blog Post" />
+          <img src="/img/blog.png" alt="Blog Post" />
           <div class="blog-content">
             <h3>Blog Name</h3>
             <p>Blog Date</p>
@@ -304,15 +336,15 @@
       <div class="pricing-grid">
         <div class="pricing-item">
           <h3>Үнэгүй</h3>
-          <p>Details of free plan</p>
+          <p class="pricing-item-text">Details of free plan</p>
         </div>
         <div class="pricing-item">
           <h3>Сарын</h3>
-          <p>Details of monthly plan</p>
+          <p class="pricing-item-text">Details of monthly plan</p>
         </div>
         <div class="pricing-item">
           <h3>Хамтрагчид</h3>
-          <p>Details of partnership plan</p>
+          <p class="pricing-item-text">Details of partnership plan</p>
         </div>
       </div>
     </section>
@@ -321,9 +353,32 @@
       <h2>Шилдэг гишүүд</h2>
       <div class="member-grid">
         <div class="top-member">
-          <img src="member1.png" alt="Member 1" />
+          <img src="/img/1.jpg" alt="Member 1" />
           <p>Name</p>
           <p>Rating: ★★★★★</p>
+          <p>Book: XXXX ширхэг</p>
+          <p>Blog: XXXX ширхэг</p>
+        </div>
+        <div class="top-member">
+          <img src="/img/2.jpg" alt="Member 1" />
+          <p>Name</p>
+          <p>Rating: ★★★★★</p>
+          <p>Book: XXXX ширхэг</p>
+          <p>Blog: XXXX ширхэг</p>
+        </div>
+        <div class="top-member">
+          <img src="/img/8.jpg" alt="Member 1" />
+          <p>Name</p>
+          <p>Rating: ★★★★★</p>
+          <p>Book: XXXX ширхэг</p>
+          <p>Blog: XXXX ширхэг</p>
+        </div>
+        <div class="top-member">
+          <img src="/img/12.jpg" alt="Member 1" />
+          <p>Name</p>
+          <p>Rating: ★★★★★</p>
+          <p>Book: XXXX ширхэг</p>
+          <p>Blog: XXXX ширхэг</p>
         </div>
         <!-- Repeat for more members -->
       </div>
