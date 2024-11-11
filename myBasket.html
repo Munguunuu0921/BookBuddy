@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Buddy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="index.html" class="logo">
+        <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
+      </a>
+      <div class="nav-menu">
+        <div class="search-container">
+          <select>
+            <option value="all">Бүгд</option>
+            <option value="category1">Номоор</option>
+            <option value="category2">Блогоор</option>
+            <option value="category3">Хүмүүсээр</option>
+          </select>
+          <input type="text" placeholder="Хайх" />
+          <button class="search-button">
+            <a href="#"><img src="./svg/search.svg" /></a>
+          </button>
+        </div>
+      </div>
+      <nav class="header-icons">
+        <a href="userPage.html"><img src="./svg/user.svg" /></a>
+        <a href="chat.html"><img src="./svg/chat.svg" /></a>
+        <a href="mySavingBooks.html"><img src="./svg/bookmark.svg" /></a>
+        <a href="basket.html"><img src="./svg/basket.svg" /></a>
+      </nav>
+    </header>
+
+    <div class="user-container">
+      <aside class="sidebar">
+        <ul>
+          <li>
+            <a href="userPage.html">
+              <img src="./svg/user.svg" alt="User Icon" />
+              <span>Хэрэглэгчийн мэдээлэл</span>
+            </a>
+          </li>
+          <li>
+            <a href="myBooks.html">
+              <img src="./svg/book.svg" alt="Book Icon" />
+              <span>Миний оруулсан ном</span>
+            </a>
+          </li>
+          <li>
+            <a href="myBlogs.html">
+              <img src="./svg/blog.svg" alt="Blog Icon" />
+              <span>Миний бичсэн блог</span>
+            </a>
+          </li>
+          <li class="active-sidebar">
+            <a href="myBasket.html">
+              <img src="./svg/basket.svg" alt="Cart Icon" />
+              <span>Миний захиалгууд</span>
+            </a>
+          </li>
+          <li>
+            <a href="mySavingBlogs.html">
+              <img src="./svg/bookmark.svg" alt="Saved Blog Icon" />
+              <span>Миний хадгалсан блогууд</span>
+            </a>
+          </li>
+          <li>
+            <a href="myAddress.html">
+              <img src="./svg/address.svg" alt="Address Icon" />
+              <span>Бүртгэлтэй хаягууд</span>
+            </a>
+          </li>
+          <li>
+            <a href="membership.html">
+              <img src="./svg/membership.svg" alt="Membership Icon" />
+              <span>Гишүүнчлэл</span>
+            </a>
+          </li>
+          <li>
+            <a href="chat.html">
+              <img src="./svg/chat.svg" alt="Chat Icon" />
+              <span>Миний чат</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html">
+              <img src="./svg/settings.svg" alt="Settings Icon" />
+              <span>Тохиргоо</span>
+            </a>
+          </li>
+          <li>
+            <a href="logout.html">
+              <img src="./svg/logout.svg" alt="Logout Icon" />
+              <span>Гарах</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <main class="content">
+        <h2>Миний оруулсан ном</h2>
+        <div class="book-grid">
+          <div class="book-card">
+            <img src="./img/Book.png" alt="Shadow and Bone" />
+            <div class="book-info">
+              <h3>book_name</h3>
+              <p>book_author</p>
+              <p>book_date</p>
+              <p>book_price</p>
+            </div>
+            <div class="book-actions">
+              <button class="remove-btn">Устгах</button>
+              <button class="pay-btn">Төлөх</button>
+            </div>
+          </div>
+          <div class="book-card">
+            <img src="./img/Book.png" alt="Shadow and Bone" />
+            <div class="book-info">
+              <h3>book_name</h3>
+              <p>book_author</p>
+              <p>book_date</p>
+              <p>book_price</p>
+            </div>
+            <div class="book-actions">
+              <button class="remove-btn">Устгах</button>
+              <button class="pay-btn">Төлөх</button>
+            </div>
+          </div>
+          <div class="book-card">
+            <img src="./img/Book.png" alt="Shadow and Bone" />
+            <div class="book-info">
+              <h3>book_name</h3>
+              <p>book_author</p>
+              <p>book_date</p>
+              <p>book_price</p>
+            </div>
+            <div class="book-actions">
+              <button class="remove-btn">Устгах</button>
+              <button class="pay-btn">Төлөх</button>
+            </div>
+          </div>
+          <div class="book-card">
+            <img src="./img/Book.png" alt="Shadow and Bone" />
+            <div class="book-info">
+              <h3>book_name</h3>
+              <p>book_author</p>
+              <p>book_date</p>
+              <p>book_price</p>
+            </div>
+            <div class="book-actions">
+              <button class="remove-btn">Устгах</button>
+              <button class="pay-btn">Төлөх</button>
+            </div>
+          </div>
+        </div>
+        <button class="back-button">Нэмэх</button>
+      </main>
+    </div>
+
+    <footer>
+      <div class="footer-logo">
+        <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
+      </div>
+      <div class="footer-grid">
+        <div class="footer-contact">
+          <div>
+            <img src="./svg/address.svg" alt="User Icon" />
+            <span
+              >Praesent ultricies, ipsum vitae elementum volutpat massa felis
+              sodales sapien, sit amet blandit augue ante eget justo. Vestibulum
+              volutpat eu justo vel lobortis.</span
+            >
+          </div>
+          <div><img src="./svg/phone.svg" alt="User Icon" />976-99690762</div>
+        </div>
+        <div class="social-icons">
+          <a href="#"><img src="./svg/email.svg" alt="Email" /></a>
+          <a href="#"><img src="./svg/facebook.svg" alt="Facebook" /></a>
+          <a href="#"><img src="./svg/instagram.svg" alt="Instagram" /></a>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <p>Copyright @2024 Book Buddy</p>
+        <p>Зохиогчийн эрх хуулиар хамгаалагдсан</p>
+      </div>
+    </footer>
+  </body>
+</html>
