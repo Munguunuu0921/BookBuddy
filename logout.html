@@ -28,7 +28,7 @@
       <nav class="header-icons">
         <a href="userPage.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
-        <a href=".html"><img src="./svg/bookmark.svg" /></a>
+        <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
         <a href="basket.html"><img src="./svg/basket.svg" /></a>
       </nav>
     </header>
@@ -48,7 +48,7 @@
               <span>Миний оруулсан ном</span>
             </a>
           </li>
-          <li class="active-sidebar">
+          <li>
             <a href="myBlogs.html">
               <img src="./svg/blog.svg" alt="Blog Icon" />
               <span>Миний бичсэн блог</span>
@@ -90,7 +90,7 @@
               <span>Тохиргоо</span>
             </a>
           </li>
-          <li>
+          <li class="active-sidebar">
             <a href="logout.html">
               <img src="./svg/logout.svg" alt="Logout Icon" />
               <span>Гарах</span>
@@ -99,66 +99,23 @@
         </ul>
       </aside>
       <main class="content">
-        <h2>Миний оруулсан блог</h2>
-        <div class="blog-grid">
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
-              </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
-              </div>
+        <h2>Гарах</h2>
+        <section>
+          <div class="illustration-enter">
+            <img
+              src="./img/girl1.png"
+              alt="Girl suggesting book illustration"
+            />
+          </div>
+          <div style="text-align: center">
+            <p>Та гарахдаа итгэлтэй байна уу?</p>
+
+            <div class="book-actions">
+              <button class="remove-btn">Үгүй</button>
+              <button class="pay-btn">Тийм</button>
             </div>
           </div>
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
-              </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
-              </div>
-            </div>
-          </div>
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
-              </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button
-          onclick="window.location.href='addBlog.html';"
-          class="back-button"
-        >
-          Нэмэх
-        </button>
+        </section>
       </main>
     </div>
 

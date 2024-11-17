@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@
       <nav class="header-icons">
         <a href="userPage.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
-        <a href=".html"><img src="./svg/bookmark.svg" /></a>
+        <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
         <a href="basket.html"><img src="./svg/basket.svg" /></a>
       </nav>
     </header>
@@ -48,7 +48,7 @@
               <span>Миний оруулсан ном</span>
             </a>
           </li>
-          <li class="active-sidebar">
+          <li>
             <a href="myBlogs.html">
               <img src="./svg/blog.svg" alt="Blog Icon" />
               <span>Миний бичсэн блог</span>
@@ -72,7 +72,7 @@
               <span>Бүртгэлтэй хаягууд</span>
             </a>
           </li>
-          <li>
+          <li class="active-sidebar">
             <a href="membership.html">
               <img src="./svg/membership.svg" alt="Membership Icon" />
               <span>Гишүүнчлэл</span>
@@ -98,67 +98,51 @@
           </li>
         </ul>
       </aside>
+
       <main class="content">
-        <h2>Миний оруулсан блог</h2>
-        <div class="blog-grid">
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
-              </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
+        <h2>Гишүүнчлэл</h2>
+        <div class="cards-container">
+            <div class="card">
+              <div class="card-header free-header">Үнэгүй</div>
+              <div class="card-content">
+                <ul>
+                  <li>Suspendisse porta ipsum eget sperm</li>
+                  <li>Praesent vitae nunc eu diam rutrum</li>
+                  <li>Fusce bibendum varius ex diam</li>
+                  <li>Sed vitae magna eros in non venenatis</li>
+                  <li>Morbi ut ornare lacus</li>
+                </ul>
+                <button class="price-button">0 төгрөг</button>
               </div>
             </div>
-          </div>
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
-              </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
+    
+            <div class="card">
+              <div class="card-header premium-header">Сарын</div>
+              <div class="card-content">
+                <ul>
+                  <li>Suspendisse porta ipsum eget sperm</li>
+                  <li>Praesent vitae nunc eu diam rutrum</li>
+                  <li>Fusce bibendum varius ex diam</li>
+                  <li>Sed vitae magna eros in non venenatis</li>
+                  <li>Morbi ut ornare lacus</li>
+                </ul>
+                <button class="price-button">x төгрөг</button>
               </div>
             </div>
-          </div>
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
+
+            <div class="swiper-container" id="recent-books-slider">
+                <div class="swiper-button-next custom-next"></div>
+                <div class="swiper-button-prev custom-prev"></div>
               </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
+
+            <div class="slider-controls">
+                <button class="nav-button prev">❮</button>
+                <div class="slider-dots">
+                  <div class="dot active"></div>
+                  <div class="dot"></div>
+                </div>
+                <button class="nav-button next">❯</button>
               </div>
-            </div>
-          </div>
-        </div>
-        <button
-          onclick="window.location.href='addBlog.html';"
-          class="back-button"
-        >
-          Нэмэх
-        </button>
       </main>
     </div>
 
@@ -189,5 +173,42 @@
         <p>Зохиогчийн эрх хуулиар хамгаалагдсан</p>
       </div>
     </footer>
+
+    <script>
+        const cards = document.querySelector(".cards-container");
+        const dots = document.querySelectorAll(".dot");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        let currentIndex = 0;
+  
+        function updateSlider(index) {
+          currentIndex = index;
+  
+          // Update dots
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+          });
+  
+          // Update cards transform
+          cards.style.transform = `translateX(-${index * 100}%)`;
+  
+          // Update button states
+          prevBtn.style.opacity = index === 0 ? "0.5" : "1";
+          nextBtn.style.opacity = index === dots.length - 1 ? "0.5" : "1";
+        }
+  
+        // Event listeners
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => updateSlider(index));
+        });
+  
+        prevBtn.addEventListener("click", () => {
+          if (currentIndex > 0) updateSlider(currentIndex - 1);
+        });
+  
+        nextBtn.addEventListener("click", () => {
+          if (currentIndex < dots.length - 1) updateSlider(currentIndex + 1);
+        });
+      </script>
   </body>
 </html>

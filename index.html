@@ -48,16 +48,16 @@
         </div>
       </div>
       <nav class="header-icons">
-        <a href="userPage.html"><img src="./svg/user.svg" /></a>
+        <a href="login.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
-        <a href="mySavingBooks.html"><img src="./svg/bookmark.svg" /></a>
+        <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
         <a href="basket.html"><img src="./svg/basket.svg" /></a>
       </nav>
     </header>
 
     <section class="user-circles container">
       <div class="user-circle-active">
-        <img src="/img/1.jpg" />
+        <img src="./img/1.jpg" />
         <p>Name</p>
       </div>
       <div class="user-circle-active">
@@ -382,11 +382,26 @@
 
     <section class="contact-form container">
       <h2>Бидэнтэй холбогдох</h2>
-      <form>
-        <input type="email" placeholder="Имэйл хаяг" />
-        <textarea placeholder="Санал хүсэлтээ бичнэ үү"></textarea>
-        <button type="submit">Илгээх</button>
-      </form>
+      <div class="contact-section">
+        <form>
+          <div class="form-group">
+            <input class="loginInput" type="email" placeholder="Имэйл хаяг" />
+          </div>
+
+          <div class="form-group">
+            <textarea
+              class="loginInput"
+              placeholder="Санал хүсэлтээ бичнэ үү"
+            ></textarea>
+          </div>
+          <button
+            class="back-button"
+            onclick="window.location.href='success.html';"
+          >
+            Илгээх
+          </button>
+        </form>
+      </div>
     </section>
 
     <footer>

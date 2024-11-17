@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@
       <nav class="header-icons">
         <a href="userPage.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
-        <a href=".html"><img src="./svg/bookmark.svg" /></a>
+        <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
         <a href="basket.html"><img src="./svg/basket.svg" /></a>
       </nav>
     </header>
@@ -48,7 +48,7 @@
               <span>Миний оруулсан ном</span>
             </a>
           </li>
-          <li class="active-sidebar">
+          <li>
             <a href="myBlogs.html">
               <img src="./svg/blog.svg" alt="Blog Icon" />
               <span>Миний бичсэн блог</span>
@@ -84,7 +84,7 @@
               <span>Миний чат</span>
             </a>
           </li>
-          <li>
+          <li class="active-sidebar">
             <a href="settings.html">
               <img src="./svg/settings.svg" alt="Settings Icon" />
               <span>Тохиргоо</span>
@@ -98,67 +98,44 @@
           </li>
         </ul>
       </aside>
+
       <main class="content">
-        <h2>Миний оруулсан блог</h2>
-        <div class="blog-grid">
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
+        <h2>Тохиргоо</h2>
+        <div class="profile-info">
+          <div class="settings-container">
+            <div class="settings-item">
+              <div class="settings-text">
+                <h3>Хэрэглэгчийн мэдээлэл өөрчлөх</h3>
+                <p>Хувийн мэдээлэл</p>
               </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
-              </div>
+              <button class="change-btn">Өөрчлөх</button>
             </div>
-          </div>
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
+
+            <div class="settings-item">
+              <div class="settings-text">
+                <h3>Хэрэглэгчийн нууц үг өөрчлөх</h3>
+                <p class="password-field">********</p>
               </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
-              </div>
+              <button class="change-btn">Өөрчлөх</button>
             </div>
-          </div>
-          <div class="blog-item">
-            <img src="/img/blog.png" alt="Blog Post" />
-            <div class="blog-content">
-              <h3>Blog Name</h3>
-              <p>Blog Date</p>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-              <div class="blog-author">
-                <img src="author.png" alt="Author" />
-                <p>Author Name</p>
+
+            <div class="settings-item">
+              <div class="settings-text">
+                <h3>Харанхуй болон гэрэлтэй горим</h3>
+                <p>Гэрэлтэй</p>
               </div>
-              <div class="blog-icons">
-                <a href="#"><img src="comment-icon.png" /></a>
-                <a href="#"><img src="share-icon.png" /></a>
-                <a href="#"><img src="bookmark-icon.png" /></a>
+              <button class="change-btn">Өөрчлөх</button>
+            </div>
+
+            <div class="settings-item">
+              <div class="settings-text">
+                <h3>Хэрэглэгчийн мэдээлэл нууцлах</h3>
+                <p>Off</p>
               </div>
+              <button class="change-btn">Өөрчлөх</button>
             </div>
           </div>
         </div>
-        <button
-          onclick="window.location.href='addBlog.html';"
-          class="back-button"
-        >
-          Нэмэх
-        </button>
       </main>
     </div>
 

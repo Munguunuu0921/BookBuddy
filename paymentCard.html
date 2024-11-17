@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <title>Book Buddy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="main-header">
+      <a href="index.html" class="logo">
+        <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
+      </a>
+      <div class="nav-menu">
+        <div class="search-container">
+          <select>
+            <option value="all">Бүгд</option>
+            <option value="category1">Номоор</option>
+            <option value="category2">Блогоор</option>
+            <option value="category3">Хүмүүсээр</option>
+          </select>
+          <input type="text" placeholder="Хайх" />
+          <button class="search-button">
+            <a href="#"><img src="./svg/search.svg" /></a>
+          </button>
+        </div>
+      </div>
+      <nav class="header-icons">
+        <a href="login.html"><img src="./svg/user.svg" /></a>
+        <a href="chat.html"><img src="./svg/chat.svg" /></a>
+        <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
+        <a href="basket.html"><img src="./svg/basket.svg" /></a>
+      </nav>
+    </header>
+
+    <div class="progress-bar">
+      <div class="progress-line"></div>
+      <div class="progress-line-active"></div>
+      <div class="progress-steps">
+        <div class="step active">
+          <div class="step-icon">🚚</div>
+          <span>Хүргэлт</span>
+        </div>
+        <div class="step active">
+          <div class="step-icon">💳</div>
+          <span>Төлбөр тооцоо</span>
+        </div>
+        <div class="step">
+          <div class="step-icon">🛍️</div>
+          <span>Баталгаажих</span>
+        </div>
+      </div>
+    </div>
+
+    <main class="content">
+      <div class="content-wrapper">
+        <section class="payment-section">
+          <h2>Төлбөрийн хэрэгсэл сонгох</h2>
+
+          <div class="payment-toggle">
+            <button class="toggle-btn active">Хувь хүн</button>
+            <button class="toggle-btn">Байгууллага</button>
+          </div>
+
+          <div class="bank-list">
+            <div class="bank-option active">
+              <img
+                src="./img/khaanBank.png"
+                alt="Khan Bank"
+                class="bank-logo"
+              />
+              <div class="bank-info">
+                <div class="bank-name">ХААН Банк</div>
+                <div class="bank-desc">Khan bank</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img src="./img/turiin.png" alt="Turiin Bank" class="bank-logo" />
+              <div class="bank-info">
+                <div class="bank-name">ТӨРИЙН Банк</div>
+                <div class="bank-desc">Turiin bank</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img src="./img/monpay.png" alt="Monpay" class="bank-logo" />
+              <div class="bank-info">
+                <div class="bank-name">MONPAY</div>
+                <div class="bank-desc">Monpay bank</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img src="./img/has.png" alt="Has Bank" class="bank-logo" />
+              <div class="bank-info">
+                <div class="bank-name">ХАС Банк</div>
+                <div class="bank-desc">Khas bank</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img src="./img/mBank.png" alt="M Bank" class="bank-logo" />
+              <div class="bank-info">
+                <div class="bank-name">М Банк</div>
+                <div class="bank-desc">M bank</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img
+                src="./img/socialPay.png"
+                alt="SocialPay"
+                class="bank-logo"
+              />
+              <div class="bank-info">
+                <div class="bank-name">SocialPay</div>
+                <div class="bank-desc">SocialPay</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img src="./img/tdb.png" alt="TDB Bank" class="bank-logo" />
+              <div class="bank-info">
+                <div class="bank-name">TDB Банк</div>
+                <div class="bank-desc">TDB bank</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img
+                src="./img/capitron.png"
+                alt="Capitron Bank"
+                class="bank-logo"
+              />
+              <div class="bank-info">
+                <div class="bank-name">Capitron Банк</div>
+                <div class="bank-desc">Capitron bank</div>
+              </div>
+            </div>
+            <div class="bank-option">
+              <img src="./img/bogdBank.png" alt="Bogd Bank" class="bank-logo" />
+              <div class="bank-info">
+                <div class="bank-name">БОГД Банк</div>
+                <div class="bank-desc">Bogd bank</div>
+              </div>
+            </div>
+
+            <!-- Add other bank options similarly -->
+
+            <div class="bank-option">
+              <img
+                src="./img/cartPicture.png"
+                alt="Busad Bank"
+                class="bank-logo"
+              />
+              <div class="bank-info">
+                <div class="bank-name">БУСАД Банк</div>
+                <div class="bank-desc">Busad bank</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="order-section">
+          <h2 class="section-title">Захиалгын мэдээлэл</h2>
+
+          <div class="order-item">
+            <span>Shadow Bone <span class="quantity">x1</span></span>
+            <span>18,900₮</span>
+          </div>
+          <div class="order-item">
+            <span>Shadow Bone <span class="quantity">x1</span></span>
+            <span>29,900₮</span>
+          </div>
+          <div class="order-item">
+            <span>Shadow Bone <span class="quantity">x1</span></span>
+            <span>29,900₮</span>
+          </div>
+          <div class="order-item">
+            <span>Хүргэлт</span>
+            <span>10,450₮</span>
+          </div>
+
+          <div class="total">
+            <span>Төлөх дүн</span>
+            <span>89,150₮</span>
+          </div>
+
+          <button
+            onclick="window.location.href='paymentSuccess.html';"
+            class="submit-btn"
+          >
+            Төлбөр төлөх
+          </button>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-logo">
+        <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
+      </div>
+      <div class="footer-grid">
+        <div class="footer-contact">
+          <div>
+            <img src="./svg/address.svg" alt="User Icon" />
+            <span
+              >Praesent ultricies, ipsum vitae elementum volutpat massa felis
+              sodales sapien, sit amet blandit augue ante eget justo. Vestibulum
+              volutpat eu justo vel lobortis.</span
+            >
+          </div>
+          <div><img src="./svg/phone.svg" alt="User Icon" />976-99690762</div>
+        </div>
+        <div class="social-icons">
+          <a href="#"><img src="./svg/email.svg" alt="Email" /></a>
+          <a href="#"><img src="./svg/facebook.svg" alt="Facebook" /></a>
+          <a href="#"><img src="./svg/instagram.svg" alt="Instagram" /></a>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <p>Copyright @2024 Book Buddy</p>
+        <p>Зохиогчийн эрх хуулиар хамгаалагдсан</p>
+      </div>
+    </footer>
+  </body>
+</html>
