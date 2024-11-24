@@ -1194,6 +1194,7 @@ footer p {
 /* Customize Swiper arrows */
 
 .swiper-button-next::after, .swiper-button-prev::after {
+  display: flex;
   font-size: 18px;
   color: var(--color-dark-gray);
 }

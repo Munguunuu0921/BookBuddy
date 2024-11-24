@@ -7,9 +7,14 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script type="module" src="App.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    <script>
+    <!-- <script>
       const swiper = new Swiper("#recent-books-slider", {
         navigation: {
           nextEl: ".swiper-button-next",
@@ -21,6 +26,43 @@
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 4 },
         },
+      });
+    </script> -->
+
+    <script>
+      const cards = document.querySelector(".cards-container");
+      const dots = document.querySelectorAll(".dot");
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+      let currentIndex = 0;
+
+      function updateSlider(index) {
+        currentIndex = index;
+
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+
+        // Update cards transform
+        cards.style.transform = `translateX(-${index * 100}%)`;
+
+        // Update button states
+        prevBtn.style.opacity = index === 0 ? "0.5" : "1";
+        nextBtn.style.opacity = index === dots.length - 1 ? "0.5" : "1";
+      }
+
+      // Event listeners
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => updateSlider(index));
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) updateSlider(currentIndex - 1);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (currentIndex < dots.length - 1) updateSlider(currentIndex + 1);
       });
     </script>
 
@@ -40,6 +82,10 @@
             <option value="category1">Номоор</option>
             <option value="category2">Блогоор</option>
             <option value="category3">Хүмүүсээр</option>
+            <option value="bestSelling">Их худалдаалагдсан</option>
+            <option value="mostExpensive">Их үнэтэй</option>
+            <option value="bestRated">Өндөр үнэлгээтэй</option>
+            <option value="mostRecent">Шинээр нэмэгдсэн</option>
           </select>
           <input type="text" placeholder="Хайх" />
           <button class="search-button">
@@ -178,9 +224,14 @@
         </div>
       </div>
 
-      <div class="swiper-container" id="recent-books-slider">
-        <div class="swiper-button-next custom-next"></div>
-        <div class="swiper-button-prev custom-prev"></div>
+
+      <div class="slider-controls">
+        <button class="nav-button prev">❮</button>
+        <div class="slider-dots">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
+        <button class="nav-button next">❯</button>
       </div>
     </section>
 
@@ -264,7 +315,10 @@
         </div>
       </div>
 
-      <div class="swiper-container" id="recent-books-slider">
+      <div class="swiper-container" id="best-selling-slider">
+        <div class="swiper-wrapper">
+          <!-- Slides will be inserted here -->
+        </div>
         <div class="swiper-button-next custom-next"></div>
         <div class="swiper-button-prev custom-prev"></div>
       </div>
@@ -383,7 +437,7 @@
     <section class="contact-form container">
       <h2>Бидэнтэй холбогдох</h2>
       <div class="contact-section">
-        <form>
+        <form action="submit_form.php" method="POST">
           <div class="form-group">
             <input class="loginInput" type="email" placeholder="Имэйл хаяг" />
           </div>
