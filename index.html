@@ -3,73 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <script type="module" src="App.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- <script>
-      const swiper = new Swiper("#recent-books-slider", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        slidesPerView: 3,
-        spaceBetween: 20,
-        breakpoints: {
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 4 },
-        },
-      });
-    </script> -->
-
-    <script>
-      const cards = document.querySelector(".cards-container");
-      const dots = document.querySelectorAll(".dot");
-      const prevBtn = document.querySelector(".prev");
-      const nextBtn = document.querySelector(".next");
-      let currentIndex = 0;
-
-      function updateSlider(index) {
-        currentIndex = index;
-
-        // Update dots
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("active", i === index);
-        });
-
-        // Update cards transform
-        cards.style.transform = `translateX(-${index * 100}%)`;
-
-        // Update button states
-        prevBtn.style.opacity = index === 0 ? "0.5" : "1";
-        nextBtn.style.opacity = index === dots.length - 1 ? "0.5" : "1";
-      }
-
-      // Event listeners
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => updateSlider(index));
-      });
-
-      prevBtn.addEventListener("click", () => {
-        if (currentIndex > 0) updateSlider(currentIndex - 1);
-      });
-
-      nextBtn.addEventListener("click", () => {
-        if (currentIndex < dots.length - 1) updateSlider(currentIndex + 1);
-      });
-    </script>
-
     <title>Book Buddy</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="./js/app.js"></script>
   </head>
-
   <body>
     <header class="main-header">
       <a href="index.html" class="logo">
@@ -77,7 +14,7 @@
       </a>
       <div class="nav-menu">
         <div class="search-container">
-          <select>
+          <select id="categorySelect">
             <option value="all">Бүгд</option>
             <option value="category1">Номоор</option>
             <option value="category2">Блогоор</option>
@@ -89,7 +26,7 @@
           </select>
           <input type="text" placeholder="Хайх" />
           <button class="search-button">
-            <a href="#"><img src="./svg/search.svg" /></a>
+            <img src="./svg/search.svg" alt="Search" />
           </button>
         </div>
       </div>
@@ -97,367 +34,148 @@
         <a href="login.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
         <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
-        <a href="basket.html"><img src="./svg/basket.svg" /></a>
+        <basket-component>
+          Basket (<span id="basket-count">0</span>)
+        </basket-component>
+
+        <theme-toggle></theme-toggle>
       </nav>
     </header>
 
-    <section class="user-circles container">
-      <div class="user-circle-active">
-        <img src="./img/1.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/5.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/2.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/7.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/8.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/9.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/12.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/13.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/19.jpg" />
-        <p>Name</p>
-      </div>
-      <div class="user-circle-active">
-        <img src="./img/9.jpg" />
-        <p>Name</p>
-      </div>
-    </section>
-
-    <section class="book-section container">
-      <h2>Хамгийн сүүлд оруулсан ном</h2>
-      <div class="book-grid">
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/1.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/5.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/2.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/7.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/8.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="slider-controls">
-        <button class="nav-button prev">❮</button>
-        <div class="slider-dots">
-          <div class="dot active"></div>
-          <div class="dot"></div>
-        </div>
-        <button class="nav-button next">❯</button>
-      </div>
-    </section>
-
-    <section class="book-section container">
-      <h2>Хамгийн их худалдаалагдсан</h2>
-      <div class="book-grid">
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/9.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/13.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/19.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/12.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-        <div class="book-item">
-          <img src="./img/Book.png" />
-          <div class="book-info">
-            <p><b>Book Name:</b></p>
-            <p>Author Name</p>
-            <p>Publication Date</p>
-            <p>Price</p>
-          </div>
-          <div class="book-actions">
-            <a class="user-circle" href="#"><img src="./img/5.jpg" /></a>
-            <a href="#"><img src="./svg/chat.svg" /></a>
-            <a href="#"><img src="./svg/eye.svg" /></a>
-            <a href="#"><img src="./svg/basket.svg" /></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="swiper-container" id="best-selling-slider">
-        <div class="swiper-wrapper">
-          <!-- Slides will be inserted here -->
-        </div>
-        <div class="swiper-button-next custom-next"></div>
-        <div class="swiper-button-prev custom-prev"></div>
-      </div>
-    </section>
-
-    <section class="blog-section container">
-      <h2>Шинэ Блогууд</h2>
-      <div class="blog-grid">
-        <div class="blog-item">
-          <img src="./img/blog.png" alt="Blog Post" />
-          <div class="blog-content">
-            <h3>Blog Name</h3>
-            <p>Blog Date</p>
-            <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-            <div class="blog-author">
-              <img src="author.png" alt="Author" />
-              <p>Author Name</p>
-            </div>
-            <div class="blog-icons">
-              <a href="#"><img src="comment-icon.png" /></a>
-              <a href="#"><img src="share-icon.png" /></a>
-              <a href="#"><img src="bookmark-icon.png" /></a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-item">
-          <img src="./img/blog.png" alt="Blog Post" />
-          <div class="blog-content">
-            <h3>Blog Name</h3>
-            <p>Blog Date</p>
-            <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-            <div class="blog-author">
-              <img src="author.png" alt="Author" />
-              <p>Author Name</p>
-            </div>
-            <div class="blog-icons">
-              <a href="#"><img src="comment-icon.png" /></a>
-              <a href="#"><img src="share-icon.png" /></a>
-              <a href="#"><img src="bookmark-icon.png" /></a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-item">
-          <img src="./img/blog.png" alt="Blog Post" />
-          <div class="blog-content">
-            <h3>Blog Name</h3>
-            <p>Blog Date</p>
-            <p>The standard chunk of Lorem Ipsum used since the 1500s.</p>
-            <div class="blog-author">
-              <img src="author.png" alt="Author" />
-              <p>Author Name</p>
-            </div>
-            <div class="blog-icons">
-              <a href="#"><img src="comment-icon.png" /></a>
-              <a href="#"><img src="share-icon.png" /></a>
-              <a href="#"><img src="bookmark-icon.png" /></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pricing-section container">
-      <h2>Төлбөр</h2>
-      <div class="pricing-grid">
-        <div class="pricing-item">
-          <h3>Үнэгүй</h3>
-          <p class="pricing-item-text">Details of free plan</p>
-        </div>
-        <div class="pricing-item">
-          <h3>Сарын</h3>
-          <p class="pricing-item-text">Details of monthly plan</p>
-        </div>
-        <div class="pricing-item">
-          <h3>Хамтрагчид</h3>
-          <p class="pricing-item-text">Details of partnership plan</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="top-members container">
-      <h2>Шилдэг гишүүд</h2>
-      <div class="member-grid">
-        <div class="top-member">
-          <img src="./img/1.jpg" alt="Member 1" />
+    <main class="container">
+      <section class="user-circles container">
+        <div class="user-circle-active">
+          <img src="./img/1.jpg" />
           <p>Name</p>
-          <p>Rating: ★★★★★</p>
-          <p>Book: XXXX ширхэг</p>
-          <p>Blog: XXXX ширхэг</p>
         </div>
-        <div class="top-member">
-          <img src="./img/2.jpg" alt="Member 1" />
+        <div class="user-circle-active">
+          <img src="./img/5.jpg" />
           <p>Name</p>
-          <p>Rating: ★★★★★</p>
-          <p>Book: XXXX ширхэг</p>
-          <p>Blog: XXXX ширхэг</p>
         </div>
-        <div class="top-member">
-          <img src="./img/8.jpg" alt="Member 1" />
+        <div class="user-circle-active">
+          <img src="./img/2.jpg" />
           <p>Name</p>
-          <p>Rating: ★★★★★</p>
-          <p>Book: XXXX ширхэг</p>
-          <p>Blog: XXXX ширхэг</p>
         </div>
-        <div class="top-member">
-          <img src="./img/12.jpg" alt="Member 1" />
+        <div class="user-circle-active">
+          <img src="./img/7.jpg" />
           <p>Name</p>
-          <p>Rating: ★★★★★</p>
-          <p>Book: XXXX ширхэг</p>
-          <p>Blog: XXXX ширхэг</p>
         </div>
-        <!-- Repeat for more members -->
-      </div>
-    </section>
+        <div class="user-circle-active">
+          <img src="./img/8.jpg" />
+          <p>Name</p>
+        </div>
+        <div class="user-circle-active">
+          <img src="./img/9.jpg" />
+          <p>Name</p>
+        </div>
+        <div class="user-circle-active">
+          <img src="./img/12.jpg" />
+          <p>Name</p>
+        </div>
+        <div class="user-circle-active">
+          <img src="./img/13.jpg" />
+          <p>Name</p>
+        </div>
+        <div class="user-circle-active">
+          <img src="./img/19.jpg" />
+          <p>Name</p>
+        </div>
+        <div class="user-circle-active">
+          <img src="./img/9.jpg" />
+          <p>Name</p>
+        </div>
+      </section>
+      <section class="book-section container">
+        <h2>Хамгийн сүүлд оруулсан ном</h2>
+        <book-list category="bestSelling"></book-list>
+      </section>
 
-    <section class="contact-form container">
-      <h2>Бидэнтэй холбогдох</h2>
-      <div class="contact-section">
-        <form action="submit_form.php" method="POST">
-          <div class="form-group">
-            <input class="loginInput" type="email" placeholder="Имэйл хаяг" />
+      <section class="book-section container">
+        <h2>Хамгийн их борлуулалттай ном</h2>
+        <book-list category="mostRecent"></book-list>
+      </section>
+
+      <section class="blog-section container">
+        <h2>Шинэ Блогууд</h2>
+        <blog-list></blog-list>
+      </section>
+
+      <section class="pricing-section container">
+        <h2>Төлбөр</h2>
+        <div class="pricing-grid">
+          <div class="pricing-item">
+            <h3>Үнэгүй</h3>
+            <p class="pricing-item-text">Details of free plan</p>
           </div>
-
-          <div class="form-group">
-            <textarea
-              class="loginInput"
-              placeholder="Санал хүсэлтээ бичнэ үү"
-            ></textarea>
+          <div class="pricing-item">
+            <h3>Сарын</h3>
+            <p class="pricing-item-text">Details of monthly plan</p>
           </div>
-          <button
-            class="back-button"
-            onclick="window.location.href='success.html';"
-          >
-            Илгээх
-          </button>
-        </form>
-      </div>
-    </section>
+          <div class="pricing-item">
+            <h3>Хамтрагчид</h3>
+            <p class="pricing-item-text">Details of partnership plan</p>
+          </div>
+        </div>
+      </section>
 
+      <section class="top-members container">
+        <h2>Шилдэг гишүүд</h2>
+        <div class="member-grid">
+          <div class="top-member">
+            <img src="./img/1.jpg" alt="Member 1" />
+            <p>Name</p>
+            <p>Rating: ★★★★★</p>
+            <p>Book: XXXX ширхэг</p>
+            <p>Blog: XXXX ширхэг</p>
+          </div>
+          <div class="top-member">
+            <img src="./img/2.jpg" alt="Member 1" />
+            <p>Name</p>
+            <p>Rating: ★★★★★</p>
+            <p>Book: XXXX ширхэг</p>
+            <p>Blog: XXXX ширхэг</p>
+          </div>
+          <div class="top-member">
+            <img src="./img/8.jpg" alt="Member 1" />
+            <p>Name</p>
+            <p>Rating: ★★★★★</p>
+            <p>Book: XXXX ширхэг</p>
+            <p>Blog: XXXX ширхэг</p>
+          </div>
+          <div class="top-member">
+            <img src="./img/12.jpg" alt="Member 1" />
+            <p>Name</p>
+            <p>Rating: ★★★★★</p>
+            <p>Book: XXXX ширхэг</p>
+            <p>Blog: XXXX ширхэг</p>
+          </div>
+          <!-- Repeat for more members -->
+        </div>
+      </section>
+      <section class="contact-form container">
+        <h2>Бидэнтэй холбогдох</h2>
+        <div class="contact-section">
+          <form action="submit_form.php" method="POST">
+            <div class="form-group">
+              <input class="loginInput" type="email" placeholder="Имэйл хаяг" />
+            </div>
+
+            <div class="form-group">
+              <textarea
+                class="loginInput"
+                placeholder="Санал хүсэлтээ бичнэ үү"
+              ></textarea>
+            </div>
+            <button
+              class="back-button"
+              onclick="window.location.href='success.html';"
+            >
+              Илгээх
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
     <footer>
       <div class="footer-logo">
         <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
