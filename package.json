@@ -1,5 +1,21 @@
 {
   "dependencies": {
-    "@faker-js/faker": "^9.2.0"
-  }
+    "@faker-js/faker": "^9.2.0",
+    "async": "^3.2.6",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1",
+    "swiper": "^11.2.0"
+  },
+  "name": "bookbuddy",
+  "version": "1.0.0",
+  "description": "Book Buddy нь ном худалдаалах, зээлдүүлэх боломжийг олгох вебсайт юм.",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

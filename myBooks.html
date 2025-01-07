@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Buddy</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
+    <script src="./js/menu-toggle.js"></script>
   </head>
   <body>
     <header class="main-header">
@@ -31,10 +33,13 @@
         <a href=".html"><img src="./svg/bookmark.svg" /></a>
         <a href="basket.html"><img src="./svg/basket.svg" /></a>
       </nav>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <img src="./svg/menu-icon.svg" alt="Menu" />
+      </div>
     </header>
 
     <div class="user-container">
-      <aside class="sidebar">
+      <aside class="sidebar" id="sidebar">
         <ul>
           <li>
             <a href="userPage.html">
@@ -98,61 +103,11 @@
           </li>
         </ul>
       </aside>
+
       <main class="content">
         <h2>Миний оруулсан ном</h2>
-        <div class="book-grid">
-          <div class="book-card">
-            <img src="./img/Book.png" alt="Shadow and Bone" />
-            <div class="book-info">
-              <h3>book_name</h3>
-              <p>book_author</p>
-              <p>book_date</p>
-              <p>book_price</p>
-            </div>
-            <div class="book-actions">
-              <button class="read-btn">Захиалах</button>
-              <button class="remove-btn">Устгах</button>
-            </div>
-          </div>
-          <div class="book-card">
-            <img src="./img/Book.png" alt="Shadow and Bone" />
-            <div class="book-info">
-              <h3>book_name</h3>
-              <p>book_author</p>
-              <p>book_date</p>
-              <p>book_price</p>
-            </div>
-            <div class="book-actions">
-              <button class="read-btn">Захиалах</button>
-              <button class="remove-btn">Устгах</button>
-            </div>
-          </div>
-          <div class="book-card">
-            <img src="./img/Book.png" alt="Shadow and Bone" />
-            <div class="book-info">
-              <h3>book_name</h3>
-              <p>book_author</p>
-              <p>book_date</p>
-              <p>book_price</p>
-            </div>
-            <div class="book-actions">
-              <button class="read-btn">Захиалах</button>
-              <button class="remove-btn">Устгах</button>
-            </div>
-          </div>
-          <div class="book-card">
-            <img src="./img/Book.png" alt="Shadow and Bone" />
-            <div class="book-info">
-              <h3>book_name</h3>
-              <p>book_author</p>
-              <p>book_date</p>
-              <p>book_price</p>
-            </div>
-            <div class="book-actions">
-              <button class="read-btn">Захиалах</button>
-              <button class="remove-btn">Устгах</button>
-            </div>
-          </div>
+        <div class="book-grid" id="bookGrid">
+          <!-- Books will be dynamically inserted here -->
         </div>
         <button
           onclick="window.location.href='addBook.html';"
@@ -163,6 +118,24 @@
       </main>
     </div>
 
+    <!-- Modal for updating book details -->
+    <div id="updateBookModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <form id="updateBookForm">
+          <label for="bookName">Book Name:</label>
+          <input type="text" id="bookName" required />
+          <label for="bookAuthor">Author:</label>
+          <input type="text" id="bookAuthor" required />
+          <label for="bookPubDate">Publish Date:</label>
+          <input type="date" id="bookPubDate" required />
+          <label for="bookPrice">Price:</label>
+          <input type="number" id="bookPrice" required />
+          <button type="submit">Update Book</button>
+        </form>
+      </div>
+    </div>
+
     <footer>
       <div class="footer-logo">
         <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
@@ -171,13 +144,9 @@
         <div class="footer-contact">
           <div>
             <img src="./svg/address.svg" alt="User Icon" />
-            <span
-              >Praesent ultricies, ipsum vitae elementum volutpat massa felis
-              sodales sapien, sit amet blandit augue ante eget justo. Vestibulum
-              volutpat eu justo vel lobortis.</span
-            >
+            <span>Contact info goes here</span>
           </div>
-          <div><img src="./svg/phone.svg" alt="User Icon" />976-99690762</div>
+          <div><img src="./svg/phone.svg" alt="Phone Icon" />976-99690762</div>
         </div>
         <div class="social-icons">
           <a href="#"><img src="./svg/email.svg" alt="Email" /></a>
@@ -190,5 +159,141 @@
         <p>Зохиогчийн эрх хуулиар хамгаалагдсан</p>
       </div>
     </footer>
+
+    <script>
+      async function loadBooks() {
+        const userId = "user123";
+        try {
+          const response = await fetch(
+            `http://localhost:3000/api/books?userId=${userId}`
+          );
+          const books = await response.json();
+          const bookGrid = document.getElementById("bookGrid");
+          bookGrid.innerHTML = "";
+
+          // Check if there are books to display
+          if (books.length === 0) {
+            bookGrid.innerHTML = "<p>No books found.</p>";
+            return;
+          }
+
+          // Loop through the books and create the book cards
+          books.forEach((book) => {
+            const bookCard = document.createElement("div");
+            bookCard.classList.add("book-card");
+
+            bookCard.innerHTML = `
+              <img src="${book.image}" alt="${book.name}" />
+              <div class="book-info">
+                <h3>${book.name}</h3>
+                <p>${book.author}</p>
+                <p>${new Date(book.pubDate).toLocaleDateString()}</p>
+                <p>${book.price}₮</p>
+              </div>
+              <div class="book-actions">
+                <button class="read-btn" onclick="openUpdateBookModal(${
+                  book.bookId
+                })">Засах</button>
+                <button class="remove-btn" onclick="removeBook(${
+                  book.bookId
+                })">Устгах</button>
+              </div>
+            `;
+            bookGrid.appendChild(bookCard);
+          });
+        } catch (error) {
+          console.error("Error loading books:", error);
+          alert("Failed to load books. Please try again later.");
+        }
+      }
+
+      // Function to handle removing a book
+      async function removeBook(bookId) {
+        const confirmDelete = confirm(
+          "Та энэ номыг устгахдаа итгэлтэй байна уу?"
+        );
+        if (confirmDelete) {
+          try {
+            const response = await fetch(
+              `http://localhost:3000/api/books/${bookId}`,
+              {
+                method: "DELETE",
+              }
+            );
+            if (response.ok) {
+              alert("Ном устгагдлаа");
+              loadBooks(); // Reload the books after deletion
+            } else {
+              alert("Ном устгахад алдаа гарлаа");
+            }
+          } catch (error) {
+            console.error("Error removing book:", error);
+            alert("Ном устгахад алдаа гарлаа");
+          }
+        }
+      }
+
+      // Function to open the modal
+      let currentBookId = null;
+      function openUpdateBookModal(bookId) {
+        fetch(`http://localhost:3000/api/books/${bookId}`)
+          .then((response) => response.json())
+          .then((book) => {
+            document.getElementById("bookName").value = book.name;
+            document.getElementById("bookAuthor").value = book.author;
+
+            // Convert the book publish date to "yyyy-MM-dd" format
+            const bookPubDate = new Date(book.pubDate);
+            const formattedDate = bookPubDate.toISOString().split("T")[0]; // "yyyy-MM-dd"
+            document.getElementById("bookPubDate").value = formattedDate;
+
+            document.getElementById("bookPrice").value = book.price;
+            document.getElementById("updateBookModal").style.display = "block";
+            currentBookId = bookId;
+          })
+          .catch((error) => {
+            console.error("Error fetching book data:", error);
+            alert("Failed to load book data.");
+          });
+      }
+
+      function closeModal() {
+        document.getElementById("updateBookModal").style.display = "none";
+      }
+
+      document
+        .getElementById("updateBookForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const updatedBook = {
+            name: document.getElementById("bookName").value,
+            author: document.getElementById("bookAuthor").value,
+            pubDate: document.getElementById("bookPubDate").value,
+            price: document.getElementById("bookPrice").value,
+          };
+
+          fetch(`http://localhost:3000/api/books/${currentBookId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedBook),
+          })
+            .then((response) => {
+              if (response.ok) {
+                alert("Book updated successfully");
+                loadBooks();
+                closeModal();
+              } else {
+                alert("Failed to update the book.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error updating the book:", error);
+              alert("Failed to update the book.");
+            });
+        });
+
+      // Load the books when the page is loaded
+      window.onload = loadBooks;
+    </script>
   </body>
 </html>

@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Book Buddy</title>
+    <title>Book Buddy - Миний Сагс</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
+    <script defer src="./js/basket.js"></script>
   </head>
 
   <body>
@@ -31,85 +32,21 @@
         <a href="login.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
         <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
-        <a href="basket.html"><img src="./svg/basket.svg" /></a>
+        <a href="basket.html" class="basket-icon">
+          <img src="./svg/basket.svg" />
+        </a>
       </nav>
     </header>
+
+    <!-- Content хэсэг -->
     <div class="user-container">
       <main class="content">
-        <h2>Миний сагс</h2>
-
-        <div class="selected-book-card">
-          <img src="./img/Book.png" alt="Shadow and Bone" class="book-image" />
-          <div class="book-details-text">
-            <div class="book-info">
-              <h2 class="book-title">Номын нэр:</h2>
-              <p class="book-description">Номын зохиолч:</p>
-              <p class="book-description">Номын хэвлэлтийн он, сар, өдөр</p>
-              <p class="book-description">Номын төрөл:</p>
-              <p class="book-description">Номын горим:</p>
-              <p class="book-description">Зар оруулсан өдөр:</p>
-              <p class="book-description">Ном зээлэх үнэ:</p>
-              <p class="book-description">Номын үнэ:</p>
-            </div>
-            <div class="reviewer">
-              <img src="./img/1.jpg" alt="Reviewer" class="reviewer-avatar" />
-              <span class="reviewer-name">Нэр</span>
-              <div class="action-buttons">
-                <button class="action-button remove-btn">Устгах</button>
-                <button
-                  onclick="window.location.href='selectChat.html';"
-                  class="action-button swap-btn"
-                >
-                  Солилцох
-                </button>
-                <button
-                  onclick="window.location.href='payment.html';"
-                  class="action-button pay-btn"
-                >
-                  Төлөх
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="selected-book-card">
-          <img src="./img/Book.png" alt="Shadow and Bone" class="book-image" />
-          <div class="book-details-text">
-            <div class="book-info">
-              <h2 class="book-title">Номын нэр:</h2>
-              <p class="book-description">Номын зохиолч:</p>
-              <p class="book-description">Номын хэвлэлтийн он, сар, өдөр</p>
-              <p class="book-description">Номын төрөл:</p>
-              <p class="book-description">Номын горим:</p>
-              <p class="book-description">Зар оруулсан өдөр:</p>
-              <p class="book-description">Ном зээлэх үнэ:</p>
-              <p class="book-description">Номын үнэ:</p>
-            </div>
-            <div class="reviewer">
-              <img src="./img/1.jpg" alt="Reviewer" class="reviewer-avatar" />
-              <span class="reviewer-name">Нэр</span>
-              <div class="action-buttons">
-                <button class="action-button remove-btn">Устгах</button>
-                <button
-                  onclick="window.location.href='selectChat.html';"
-                  class="action-button swap-btn"
-                >
-                  Солилцох
-                </button>
-                <button
-                  onclick="window.location.href='payment.html';"
-                  class="action-button pay-btn"
-                >
-                  Төлөх
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h2>Миний Сагс</h2>
+        <div id="basket-container"></div>
       </main>
     </div>
 
+    <!-- Footer хэсэг -->
     <footer>
       <div class="footer-logo">
         <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
@@ -117,14 +54,14 @@
       <div class="footer-grid">
         <div class="footer-contact">
           <div>
-            <img src="./svg/address.svg" alt="User Icon" />
+            <img src="./svg/address.svg" alt="Address Icon" />
             <span
               >Praesent ultricies, ipsum vitae elementum volutpat massa felis
               sodales sapien, sit amet blandit augue ante eget justo. Vestibulum
               volutpat eu justo vel lobortis.</span
             >
           </div>
-          <div><img src="./svg/phone.svg" alt="User Icon" />976-99690762</div>
+          <div><img src="./svg/phone.svg" alt="Phone Icon" /> 976-99690762</div>
         </div>
         <div class="social-icons">
           <a href="#"><img src="./svg/email.svg" alt="Email" /></a>

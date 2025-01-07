@@ -1,0 +1,457 @@
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .book-slider {
+        grid-template-columns: repeat(3, 1fr); /* Дэлгэц багасахад 3 ном багтана */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .book-slider {
+        grid-template-columns: repeat(2, 1fr); /* Дэлгэц илүү багасахад 2 ном багтана */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .book-slider {
+        grid-template-columns: 1fr; /* Гар утасны дэлгэц дээр 1 ном багтана */
+    }
+  }
+
+
+
+  /* Hide sidebar on small screens and display menu icon */
+@media (max-width: 960px) {
+    .sidebar {
+      display: none;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .sidebar.open {
+      display: block;
+    }
+  
+    .content {
+      margin-left: 0; /* Adjust content margin */
+    }
+  }
+
+  /* Responsive Design */
+@media (min-width: 768px) {
+    .blog-item {
+      width: 48%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .blog-item {
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .chat-messaging {
+      max-width: 90%;
+    }
+  
+    .footer-content {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      flex-direction: column;
+    }
+  }
+
+  /* Base mobile styles */
+@media screen and (max-width: 960px) {
+    .container {
+      width: 95%;
+      padding: 0 10px;
+    }
+  
+    /* Header adjustments */
+    header.main-header {
+      padding: 0.5rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .nav-menu {
+      width: 100%;
+      justify-content: center;
+    }
+  
+  
+    /* Book grid adjustments */
+    .book-section {
+      justify-content: center;
+    }
+  
+    .latest-book-section {
+      justify-content: center;
+  
+  }
+  
+    /* Blog grid adjustments */
+    .blog-item {
+      width: 100%;
+    }
+  
+    /* Pricing section */
+    .pricing-grid {
+      flex-direction: column;
+    }
+  
+    .pricing-item {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    /* User page */
+    .user-container {
+      flex-direction: column;
+      margin: 10px;
+    }
+  
+    .sidebar {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    .content {
+      padding: 0.5rem;
+    }
+  
+    /* Login section */
+    .login-section {
+      width: 90%;
+    }
+  
+    /* Chat adjustments */
+    .chat-messaging {
+      max-width: 100%;
+    }
+  
+    /* Payment section */
+    .content-wrapper {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  
+    .bank-list {
+      grid-template-columns: 1fr;
+    }
+  
+    /* Footer adjustments */
+    .footer-grid {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-contact {
+      align-items: center;
+    }
+  
+    .social-icons {
+      justify-content: center;
+    }
+  }
+
+  /* Tablet styles */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      width: 90%;
+    }
+  
+  
+    /* Blog grid adjustments */
+    .blog-item {
+      width: 45%;
+    }
+  
+    /* Pricing section */
+    .pricing-item {
+      width: 45%;
+    }
+  
+    /* Login section */
+    .login-section {
+      width: 70%;
+    }
+  
+    /* User page */
+    .user-container {
+      margin: 20px;
+    }
+  
+    .sidebar {
+      width: 250px;
+    }
+  
+    /* Payment section */
+    .bank-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Landscape mobile styles */
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    /* Header adjustments */
+    header.main-header {
+      padding: 0.5rem 1rem;
+    }
+  
+    /* Book grid adjustments */
+    /* .book-item {
+      width: 45%;
+    } */
+  
+    /* User circles */
+    .user-circles {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .user-circle {
+      margin: 5px;
+    }
+  
+    /* Chat section */
+    .chat-container {
+      height: calc(80vh - 40px);
+    }
+  }
+  
+  /* Additional adjustments for very small screens */
+  @media screen and (max-width: 320px) {
+    .header-icons {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .book-item {
+      width: 100%;
+    }
+  
+    .social-login {
+      flex-direction: column;
+    }
+  
+    .bank-option {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+/* First make the basket link container relative */
+.basket-link {
+  position: relative;
+  display: inline-block;
+}
+.bookmark-link {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style the item count badge */
+.header-icons .basket-link .item-count {
+  position: absolute;
+  top: -10px;
+  right: -26px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1;
+}
+.header-icons .bookmark-link .item-count {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 767px) {
+  .basket-link {
+    /* Ensure the container stays inline when header stack on mobile */
+    display: inline-block;
+  }
+  
+  .header-icons .basket-link .item-count {
+    /* Slightly adjust position for mobile if needed */
+    top: -10px;
+    right: -15px;
+    font-size: 10px;
+    min-width: 16px;
+    padding: 2px 4px;
+  }
+}
+
+/* First make the basket link container relative */
+.basket-link {
+    position: relative;
+    display: inline-block;
+  }
+  .bookmark-link {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Style the item count badge */
+  .header-icons .basket-link .item-count {
+    position: absolute;
+    top: -10px;
+    right: -26px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+  }
+  .header-icons .bookmark-link .item-count {
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 767px) {
+    .basket-link {
+      /* Ensure the container stays inline when header stack on mobile */
+      display: inline-block;
+    }
+    
+    .header-icons .basket-link .item-count {
+      /* Slightly adjust position for mobile if needed */
+      top: -10px;
+      right: -15px;
+      font-size: 10px;
+      min-width: 16px;
+      padding: 2px 4px;
+    }
+  }
+
+  /* For very small screens */
+@media screen and (max-width: 320px) {
+    .header-icons .basket-link {
+      /* Give some breathing room when icons wrap */
+      margin: 5px;
+    }
+  }
+/* ======================================== */
+/* Tablet Devices (768px to 1024px) */
+/* ======================================== */
+@media (max-width: 1024px) {
+    .main-header {
+        flex-wrap: wrap;
+    }
+
+    .nav-menu {
+        flex-basis: 100%;
+        margin-top: 10px;
+    }
+
+    .user-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        max-width: 100%;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .selected-book-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .book-image {
+        max-width: 100px;
+    }
+}
+
+/* ======================================== */
+/* Mobile Devices (up to 768px) */
+/* ======================================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .header-icons {
+        display: none;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .menu-toggle img {
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .user-container {
+        padding: 10px;
+    }
+
+    .selected-book-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .book-image {
+        max-width: 80px;
+    }
+
+    .action-buttons button {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

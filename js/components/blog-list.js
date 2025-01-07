@@ -14,11 +14,9 @@ export default async function BlogList() {
   // Блог бүрийг харуулах
   const blogListHTML = blogs.map((blog) => BlogCard({ blog })).join('');
   document.querySelector('.blog-section').innerHTML = `
-  <section class="blog-section container">
     <h2>Шинэ Блогууд</h2>
     <div class="blog-grid">
       ${blogListHTML}
     </div>
-  </section>
   `;
 }

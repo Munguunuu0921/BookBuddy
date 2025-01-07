@@ -16,7 +16,7 @@ export class BookList extends HTMLElement {
             <div class="book-grid">
                 ${this.books.map(book => `
                     <book-item
-                        title="${book.title}"
+                        title="${book.name}"
                         author="${book.author}"
                         price="${book.price}"
                         image="${book.image}"

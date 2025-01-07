@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Buddy</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="media.css" />
     <script type="module" src="./js/app.js"></script>
   </head>
   <body>
@@ -16,9 +18,6 @@
         <div class="search-container">
           <select id="categorySelect">
             <option value="all">Бүгд</option>
-            <option value="category1">Номоор</option>
-            <option value="category2">Блогоор</option>
-            <option value="category3">Хүмүүсээр</option>
             <option value="bestSelling">Их худалдаалагдсан</option>
             <option value="mostExpensive">Их үнэтэй</option>
             <option value="bestRated">Өндөр үнэлгээтэй</option>
@@ -33,125 +32,25 @@
       <nav class="header-icons">
         <a href="login.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
-        <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
+        <bookmark-component></bookmark-component>
         <basket-component>
           Basket (<span id="basket-count">0</span>)
         </basket-component>
-
         <theme-toggle></theme-toggle>
       </nav>
     </header>
-
     <main class="container">
-      <section class="user-circles container">
-        <div class="user-circle-active">
-          <img src="./img/1.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/5.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/2.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/7.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/8.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/9.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/12.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/13.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/19.jpg" />
-          <p>Name</p>
-        </div>
-        <div class="user-circle-active">
-          <img src="./img/9.jpg" />
-          <p>Name</p>
-        </div>
-      </section>
-      <section class="book-section container">
-        <h2>Хамгийн сүүлд оруулсан ном</h2>
-        <book-list category="bestSelling"></book-list>
-      </section>
+      <user-list></user-list>
 
-      <section class="book-section container">
-        <h2>Хамгийн их борлуулалттай ном</h2>
-        <book-list category="mostRecent"></book-list>
-      </section>
+      <section class="book-section container"></section>
+      <section class="latest-book-section"></section>
 
-      <section class="blog-section container">
-        <h2>Шинэ Блогууд</h2>
-        <blog-list></blog-list>
-      </section>
+      <recent-blogs></recent-blogs>
 
-      <section class="pricing-section container">
-        <h2>Төлбөр</h2>
-        <div class="pricing-grid">
-          <div class="pricing-item">
-            <h3>Үнэгүй</h3>
-            <p class="pricing-item-text">Details of free plan</p>
-          </div>
-          <div class="pricing-item">
-            <h3>Сарын</h3>
-            <p class="pricing-item-text">Details of monthly plan</p>
-          </div>
-          <div class="pricing-item">
-            <h3>Хамтрагчид</h3>
-            <p class="pricing-item-text">Details of partnership plan</p>
-          </div>
-        </div>
-      </section>
+      <pricing-section></pricing-section>
 
-      <section class="top-members container">
-        <h2>Шилдэг гишүүд</h2>
-        <div class="member-grid">
-          <div class="top-member">
-            <img src="./img/1.jpg" alt="Member 1" />
-            <p>Name</p>
-            <p>Rating: ★★★★★</p>
-            <p>Book: XXXX ширхэг</p>
-            <p>Blog: XXXX ширхэг</p>
-          </div>
-          <div class="top-member">
-            <img src="./img/2.jpg" alt="Member 1" />
-            <p>Name</p>
-            <p>Rating: ★★★★★</p>
-            <p>Book: XXXX ширхэг</p>
-            <p>Blog: XXXX ширхэг</p>
-          </div>
-          <div class="top-member">
-            <img src="./img/8.jpg" alt="Member 1" />
-            <p>Name</p>
-            <p>Rating: ★★★★★</p>
-            <p>Book: XXXX ширхэг</p>
-            <p>Blog: XXXX ширхэг</p>
-          </div>
-          <div class="top-member">
-            <img src="./img/12.jpg" alt="Member 1" />
-            <p>Name</p>
-            <p>Rating: ★★★★★</p>
-            <p>Book: XXXX ширхэг</p>
-            <p>Blog: XXXX ширхэг</p>
-          </div>
-          <!-- Repeat for more members -->
-        </div>
-      </section>
+      <top-members></top-members>
+
       <section class="contact-form container">
         <h2>Бидэнтэй холбогдох</h2>
         <div class="contact-section">
