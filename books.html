@@ -14,23 +14,26 @@
       </a>
       <div class="nav-menu">
         <div class="search-container">
-          <select>
+          <select aria-label="Хайлтын ангилал сонгох">
             <option value="all">Бүгд</option>
             <option value="category1">Номоор</option>
             <option value="category2">Блогоор</option>
             <option value="category3">Хүмүүсээр</option>
           </select>
           <input type="text" placeholder="Хайх" />
-          <button class="search-button">
-            <a href="#"><img src="./svg/search.svg" /></a>
+          <button class="search-button" type="submit" aria-label="Хайх">
+            <img src="./svg/search.svg" alt="" />
           </button>
         </div>
       </div>
       <nav class="header-icons">
-        <a href="userPage.html"><img src="./svg/user.svg" /></a>
-        <a href="chat.html"><img src="./svg/chat.svg" /></a>
-        <a href="saveBlogs.html"><img src="./svg/bookmark.svg" /></a>
-        <a href="basket.html"><img src="./svg/basket.svg" /></a>
+        <a href="userPage.html"><img src="./svg/user.svg" alt="Хэрэглэгчийн хуудас" /></a>
+        <a href="chat.html"><img src="./svg/chat.svg" alt="Хэрэглэгчийн чат" /></a>
+        <bookmark-component></bookmark-component>
+        <basket-component>
+          Basket (<span id="basket-count">0</span>)
+        </basket-component>
+        <theme-toggle></theme-toggle>
       </nav>
     </header>
 
