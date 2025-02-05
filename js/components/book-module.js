@@ -1,254 +1,126 @@
-const CONFIG = {
-    LOCAL_API_URL: 'http://localhost:3000/api/books',
-    API_URL: 'https://api.jsonbin.io/v3/b/673ae58fad19ca34f8cbdcff',
-    API_KEY: '$2a$10$yOu5Xw3tC6QY3iMiYx1W6O85I8Mb0HPpAVffLCpBrbu05CPJvpgLO',
-    headers: {
-        'X-Master-Key': '$2a$10$yOu5Xw3tC6QY3iMiYx1W6O85I8Mb0HPpAVffLCpBrbu05CPJvpgLO',
-        'Content-Type': 'application/json',
-    }
-};
+import { BookList } from './book-list.js';
 
-const filterFunctions = {
-    bestSelling: (books) => [...books].sort((a, b) => b.viewCount - a.viewCount),
-    mostExpensive: (books) => [...books].sort((a, b) => b.price - a.price),
-    bestRated: (books) => [...books].sort((a, b) => b.rating - a.rating),
-    mostRecent: (books) => [...books].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-};
-
-class BookManager {
-    constructor(basketComponent = null) {
+export class BookModule extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
         this.books = [];
         this.filteredBooks = [];
-        this.basketComponent = basketComponent;
-        this.searchInput = document.querySelector('.search-container input');
-        this.filterSelect = document.querySelector('.search-container select');
-        this.bookGrid = document.querySelector('.book-section');
-        this.latestBookSection = document.querySelector('.latest-book-section');
-        this.init();
     }
 
-    async init() {
+    async connectedCallback() {
         await this.fetchBooks();
+        this.loadState();
+        this.render();
         this.setupEventListeners();
-        this.renderBooks(this.books);
-        this.renderLatestBook();
     }
 
-    // Номны өгөгдлийг татах
     async fetchBooks() {
         try {
-            console.log('Local API-аас өгөгдөл татаж эхэллээ...');
-            const localResponse = await fetch(CONFIG.LOCAL_API_URL);
-            if (localResponse.ok) {
-                const data = await localResponse.json();
-                console.log('Local API-аас өгөгдөл:', data);
-                this.books = data;
-            } else {
-                throw new Error('Local server unavailable');
-            }
+            const response = await fetch('http://localhost:3000/api/books'); // API тохируулна
+            if (!response.ok) throw new Error('Failed to fetch books');
+            this.books = await response.json();
+            this.saveToLocalStorage('books', this.books);
         } catch (error) {
-            console.warn('Local сервер ашиглах боломжгүй. Алсын сервер рүү шилжиж байна.', error);
-            const response = await fetch(CONFIG.API_URL, { headers: CONFIG.headers });
-            const data = await response.json();
-            console.log('Remote API-аас өгөгдөл:', data);
-            this.books = data.record.books;
+            console.error('Error fetching books:', error);
+            this.books = this.getFromLocalStorage('books') || []; // Fallback өгөгдөл
         }
         this.filteredBooks = [...this.books];
-        console.log('Номны нийт өгөгдөл:', this.books);
-    }    
-
-    // Ивэнтүүдийг суулгах
-    setupEventListeners() {
-        this.searchInput.addEventListener('input', () => this.filterBooks());
-        this.filterSelect.addEventListener('change', () => this.filterBooks());
-        this.bookGrid.addEventListener('click', (event) => this.handleBasketButtonClick(event));
-        this.latestBookSection.addEventListener('click', (event) => this.handleBasketButtonClick(event));
     }
 
-    // Сагсны товч дарах ивэнт
-    handleBasketButtonClick(event) {
-        const basketButton = event.target.closest('.basket-btn');
-        if (basketButton) {
-            const bookId = parseInt(basketButton.dataset.bookId);
-            console.log('Сагсны товч дарагдлаа. bookId:', bookId);
-            this.addToBasket(bookId);
-        } else {
-            console.warn('Сагсны товчлуур олоогүй.');
-        }
-    }    
+    setupEventListeners() {
+        const searchInput = document.querySelector('.search-container input');
+        searchInput.addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            this.saveToLocalStorage('searchTerm', searchTerm);
+            this.filterBooks(searchTerm);
+        });
 
-    // Шүүлтүүр хийх
-    filterBooks() {
-        const searchTerm = this.searchInput.value.toLowerCase();
-        const filterType = this.filterSelect.value;
-        console.log('Хайлт:', searchTerm, 'Шүүлтүүр:', filterType);
-    
-        let filtered = this.books.filter(book =>
-            (book.name && book.name.toLowerCase().includes(searchTerm)) ||
-            (book.author && book.author.toLowerCase().includes(searchTerm))
+        const filterSelect = document.querySelector('#categorySelect');
+        filterSelect.addEventListener('change', (event) => {
+            const filterType = event.target.value;
+            this.saveToLocalStorage('filterType', filterType);
+            this.applyFilter(filterType);
+        });
+    }
+
+    filterBooks(searchTerm) {
+        this.filteredBooks = this.books.filter(book =>
+            book.name.toLowerCase().includes(searchTerm) ||
+            book.author.toLowerCase().includes(searchTerm)
         );
-        console.log('Шүүлтүүрт нийцсэн номнууд:', filtered);
-    
+        this.saveToLocalStorage('filteredBooks', this.filteredBooks); // Хайлтын үр дүнг хадгална
+        this.render();
+    }
+
+    applyFilter(filterType) {
         switch (filterType) {
             case 'bestSelling':
-                filtered = filterFunctions.bestSelling(filtered);
+                this.filteredBooks = [...this.books].sort((a, b) => b.sales - a.sales);
                 break;
             case 'mostExpensive':
-                filtered = filterFunctions.mostExpensive(filtered);
+                this.filteredBooks = [...this.books].sort((a, b) => b.price - a.price);
                 break;
             case 'bestRated':
-                filtered = filterFunctions.bestRated(filtered);
+                this.filteredBooks = [...this.books].sort((a, b) => b.rating - a.rating);
                 break;
             case 'mostRecent':
-                filtered = filterFunctions.mostRecent(filtered);
+                this.filteredBooks = [...this.books].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
                 break;
+            default:
+                this.filteredBooks = [...this.books];
         }
-    
-        console.log('Эцсийн шүүгдсэн номнууд:', filtered);
-        this.filteredBooks = filtered;
-        this.renderBooks(filtered, filterType);
-    }    
-
-    // Номуудыг рендерлэх
-    renderBooks(books, filterType = '') {
-        console.log(`Рендерлэх номууд (${filterType}):`, books);
-        this.bookGrid.innerHTML = `
-            <h2>${filterType === 'mostRecent' ? 'Хамгийн сүүлд оруулсан ном' :
-                   filterType === 'bestSelling' ? 'Хамгийн их борлуулалттай ном' : 
-                   filterType === 'bestRated' ? 'Хамгийн өндөр үнэлгээтэйгээр эрэмбэлсэн ном' : 
-                   filterType === 'mostExpensive' ? 'Хамгийн их үнэтэйгээр эрэмбэлсэн ном' : 
-                   'Бүх ном'}</h2>
-            <div class="book-slider">
-                ${books.map(book => `
-                    <div class="book-item">
-                        <img src="${book.image}" alt="${book.name}" />
-                        <div class="book-info">
-                            <p><b>${book.name}</b></p>
-                            <p>${book.author}</p>
-                            <p>Rating: ${book.rating}★</p>
-                            <p>${new Date(book.pubDate).toLocaleDateString()}</p>
-                            <p>$${book.price.toFixed(2)}</p>
-                        </div>
-                        <div class="book-actions">
-                            <a class="user-circle" href="#">
-                                <img src="${book.userImage || './img/1.jpg'}" />
-                            </a>
-                            <a href="#"><img src="./svg/chat.svg" /></a>
-                            <a href="#"><img src="./svg/eye.svg" /></a>
-                            <a href="#" class="basket-btn" data-book-id="${book.bookId}">
-                                <img src="./svg/basket.svg" />
-                            </a>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-        this.enableSlider();
-    }    
-
-    renderLatestBook() {
-        // Бүх номуудыг хамгийн сүүлд оруулсан нь эхэнд байрлаж байхаар эрэмбэлэх
-        const sortedBooks = this.books.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-      
-        // Хэрэв ном байхгүй бол буцна
-        if (sortedBooks.length === 0) return;
-      
-        // `latest-book-section`-д агуулга нэмэх
-        this.latestBookSection.innerHTML = `
-          <h2>Хамгийн сүүлд оруулсан номууд</h2>
-          <div class="book-slider">
-            ${sortedBooks
-              .map(
-                (book) => `
-              <div class="book-item">
-                <img src="${book.image}" alt="${book.name}" />
-                <div class="book-info">
-                  <p><b>${book.name}</b></p>
-                  <p>${book.author}</p>
-                  <p>Rating: ${book.rating}★</p>
-                  <p>${new Date(book.pubDate).toLocaleDateString()}</p>
-                  <p>$${book.price.toFixed(2)}</p>
-                </div>
-                <div class="book-actions">
-                  <a class="user-circle" href="#">
-                    <img src="${book.userImage || './img/1.jpg'}" />
-                  </a>
-                  <a href="#"><img src="./svg/chat.svg" /></a>
-                  <a href="#"><img src="./svg/eye.svg" /></a>
-                  <a href="#" class="basket-btn" data-book-id="${book.bookId}">
-                    <img src="./svg/basket.svg" />
-                  </a>
-                </div>
-              </div>
-            `
-              )
-              .join('')}
-          </div>
-        `;
-      
-        // Slider-г идэвхжүүлэх
-        this.enableLatestSlider();
-      }
-
-    // Слайдер идэвхжүүлэх
-    enableSlider() {
-        const slider = this.bookGrid.querySelector('.book-slider');
-        if (slider) {
-            slider.style.display = 'flex';
-            slider.style.overflowX = 'auto';
-            slider.style.scrollSnapType = 'x mandatory';
-            slider.style.gap = '1rem';
-        }
+        this.saveToLocalStorage('filteredBooks', this.filteredBooks); // Шүүлтүүрийн үр дүнг хадгална
+        this.render();
     }
 
-    enableLatestSlider() {
-        const latestSlider = this.latestBookSection.querySelector('.book-slider');
-        if (latestSlider) {
-            latestSlider.style.display = 'flex';
-            latestSlider.style.overflowX = 'auto';
-            latestSlider.style.scrollSnapType = 'x mandatory';
-            latestSlider.style.gap = '1rem';
-        }
-      }
+    render() {
+        const filterType = this.getFromLocalStorage('filterType') || 'all'; // LocalStorage-оос filterType авах
+        this.shadowRoot.innerHTML = `
+            <style>
+                h2 {
+                    font-size: 1.5rem;
+                    margin-bottom: 10px;
+                    color: #333;
+                }
+            </style>
+             <h2>${filterType === 'mostRecent' ? 'Хамгийн сүүлд оруулсан ном' :
+                   filterType === 'bestSelling' ? 'Хамгийн их борлуулалттай ном' : 
+                   filterType === 'bestRated' ? 'Хамгийн өндөр үнэлгээтэй ном' : 
+                   filterType === 'mostExpensive' ? 'Хамгийн их үнэтэй ном' : 
+                   'Бүх ном'}</h2>
+            <book-list>
+                ${this.filteredBooks.map(book => `
+                    <book-item
+                        name="${book.name}"
+                        author="${book.author}"
+                        pubDate="${book.pubDate}"
+                        price="${book.price}"
+                        image="${book.image}"
+                        bookId="${book.id}"
+                    ></book-item>
+                `).join('')}
+            </book-list>
+        `;
+    }
 
+    saveToLocalStorage(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
 
-    // Сагсанд ном нэмэх
-    async addToBasket(bookId) {
-        const book = this.books.find(b => b.bookId === bookId);
-    
-        if (!book) {
-            console.warn('Ном олдсонгүй:', bookId);
-            alert('Ном олдсонгүй.');
-            return;
-        }
-    
-        if (!book.name || !book.price || !book.bookId) {
-            console.error('Номны өгөгдөл бүрэн биш байна:', book);
-            alert('Номны өгөгдөл бүрэн биш байна.');
-            return;
-        }
-    
-        try {
-            const response = await fetch('http://localhost:3000/api/basket', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(book),
-            });
-    
-            if (!response.ok) {
-                console.error('Server response error:', response.status);
-                throw new Error('Failed to add book to basket');
-            }
-    
-            const data = await response.json();
-            document.dispatchEvent(new CustomEvent('add-to-basket', { detail: book }));
-            alert('Ном амжилттай сагсанд нэмэгдлээ!');
-        } catch (error) {
-            console.error('Error adding book to basket:', error);
-            alert('Сагсанд нэмэх үед алдаа гарлаа.');
-        }
-    }    
-    
-}    
+    getFromLocalStorage(key) {
+        return JSON.parse(localStorage.getItem(key));
+    }
 
-export default BookManager;
+    loadState() {
+        const searchTerm = this.getFromLocalStorage('searchTerm') || '';
+        document.querySelector('.search-container input').value = searchTerm;
+        this.filteredBooks = this.getFromLocalStorage('filteredBooks') || this.books;
+
+        const filterType = this.getFromLocalStorage('filterType') || 'all';
+        document.querySelector('#categorySelect').value = filterType;
+        this.applyFilter(filterType);
+    }
+}
+
+customElements.define('book-module', BookModule);

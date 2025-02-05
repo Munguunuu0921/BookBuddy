@@ -1,10 +1,7 @@
 export class BookList extends HTMLElement {
     constructor() {
         super();
-        this.books = [
-            { title: 'JavaScript Mastery', author: 'John Doe', price: 29.99, image: './img/Book.png' },
-            { title: 'Web Components Deep Dive', author: 'Jane Smith', price: 34.99, image: './img/Book.png' }
-        ];
+        this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
@@ -12,20 +9,32 @@ export class BookList extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `
-            <div class="book-grid">
-                ${this.books.map(book => `
-                    <book-item
-                        title="${book.name}"
-                        author="${book.author}"
-                        price="${book.price}"
-                        image="${book.image}"
-                    ></book-item>
-                `).join('')}
+        this.shadowRoot.innerHTML = `
+            <style>
+                .book-slider {
+                    display: flex; /* Flexbox ашиглаж мөрийн дагуу харуулах */
+                    gap: 1rem;
+                    overflow-x: auto; /* Хэвтээ чиглэлд гүйлгэх боломжтой болгоно */
+                    padding: 10px;
+                    scroll-behavior: smooth; /* Гүйх үед зөөлөн анимац */
+                }
+                .book-slider::-webkit-scrollbar {
+                    height: 8px;
+                    background: #f0f0f0; /* Scrollbar-ийн дэвсгэр өнгө */
+                }
+                .book-slider::-webkit-scrollbar-thumb {
+                    background: #bbb; /* Scrollbar-ийн хөтлөгч */
+                    border-radius: 5px;
+                }
+                .book-slider::-webkit-scrollbar-thumb:hover {
+                    background: #999;
+                }
+            </style>
+            <div class="book-slider">
+                <slot></slot>
             </div>
         `;
     }
 }
 
-// Define the custom element
 customElements.define('book-list', BookList);

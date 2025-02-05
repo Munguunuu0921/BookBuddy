@@ -3,31 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Buddy - Миний Сагс</title>
+    <title>Миний Сагс</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="media.css" />
     <script defer src="./js/basket.js"></script>
   </head>
-
   <body>
     <header class="main-header">
       <a href="index.html" class="logo">
         <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
       </a>
-      <div class="nav-menu">
-        <div class="search-container">
-          <select>
-            <option value="all">Бүгд</option>
-            <option value="category1">Номоор</option>
-            <option value="category2">Блогоор</option>
-            <option value="category3">Хүмүүсээр</option>
-          </select>
-          <input type="text" placeholder="Хайх" />
-          <button class="search-button">
-            <a href="#"><img src="./svg/search.svg" /></a>
-          </button>
-        </div>
-      </div>
       <nav class="header-icons">
         <a href="login.html"><img src="./svg/user.svg" /></a>
         <a href="chat.html"><img src="./svg/chat.svg" /></a>
@@ -38,40 +22,17 @@
       </nav>
     </header>
 
-    <!-- Content хэсэг -->
-    <div class="user-container">
-      <main class="content">
-        <h2>Миний Сагс</h2>
-        <div id="basket-container"></div>
-      </main>
-    </div>
+    <main>
+      <h2>Миний Сагс</h2>
+      <div id="basket-container" class="basket-container"></div>
+    </main>
 
-    <!-- Footer хэсэг -->
     <footer>
       <div class="footer-logo">
         <img src="./img/bookbuddy_logo.png" alt="Book Buddy Logo" />
       </div>
-      <div class="footer-grid">
-        <div class="footer-contact">
-          <div>
-            <img src="./svg/address.svg" alt="Address Icon" />
-            <span
-              >Praesent ultricies, ipsum vitae elementum volutpat massa felis
-              sodales sapien, sit amet blandit augue ante eget justo. Vestibulum
-              volutpat eu justo vel lobortis.</span
-            >
-          </div>
-          <div><img src="./svg/phone.svg" alt="Phone Icon" /> 976-99690762</div>
-        </div>
-        <div class="social-icons">
-          <a href="#"><img src="./svg/email.svg" alt="Email" /></a>
-          <a href="#"><img src="./svg/facebook.svg" alt="Facebook" /></a>
-          <a href="#"><img src="./svg/instagram.svg" alt="Instagram" /></a>
-        </div>
-      </div>
-      <div class="footer-grid">
-        <p>Copyright @2024 Book Buddy</p>
-        <p>Зохиогчийн эрх хуулиар хамгаалагдсан</p>
+      <div class="footer-contact">
+        <p>Зохиогчийн эрх ©2024 Book Buddy</p>
       </div>
     </footer>
   </body>
