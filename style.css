@@ -195,6 +195,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 10px;
     padding-top: 10px;
   }
   
@@ -256,8 +257,8 @@ h2 {
     margin: 15px 0;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
   }
 
   .book-item:hover {
@@ -276,7 +277,7 @@ h2 {
 }
 
 /* Номын элемент */
-.book-item {
+/* .book-item {
   text-align: center;
   border: 1px solid var(--color-main);
   border-radius: 10px;
@@ -288,7 +289,7 @@ h2 {
 
 .book-item:hover {
   transform: translateY(-5px);
-}
+} */
 
 /* Зурагны тохиргоо */
 .book-item img {
@@ -313,12 +314,12 @@ h2 {
 }
 
 /* Хэрэглэгчийн үйлдлийн товчнууд */
-.book-actions {
+/* .book-actions {
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
   width: 100%;
-}
+} */
 
 
 
@@ -1252,6 +1253,7 @@ h2 {
 footer p {
   font-size: 0.9em;
   color: var(--color-dark-gray);
+  text-align: center;
 }
 
 .footer-contact div {
@@ -1285,11 +1287,11 @@ footer p {
   filter: invert(27%) sepia(10%) saturate(300%) hue-rotate(0deg) brightness(90%) contrast(90%);
 }
 
-footer p {
+/* footer p {
   font-size: 0.9em;
   color: var(--color-dark-gray);
   text-align: center;
-}
+} */
 .modal {
   display: none;
   position: fixed;
