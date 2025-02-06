@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="mn">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ном - BookBuddy</title>
-    <meta name="description" content="BookBuddy - Монгол хэл дээрх номын хайлт ба зохион байгуулалтын вэбсайт." />
-    <link rel="preload" href="style.css" as="style" />
+    <title>Book Buddy</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="stylesheet" href="media.css" />
-    <link rel="apple-touch-icon" href="/path/to/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/path/to/apple-touch-icon-180x180.png">
     <script type="module" src="./js/app.js"></script>
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   </head>
 
   <body>
@@ -21,22 +18,23 @@
       </a>
       <div class="nav-menu">
         <div class="search-container">
-          <select id="categorySelect" aria-label="Ангилал сонгох">
+          <label for="categorySelect" class="visually-hidden">Select category</label>
+          <select id="categorySelect" aria-label="Select category">
             <option value="all">Бүгд</option>
             <option value="bestSelling">Их худалдаалагдсан</option>
             <option value="mostExpensive">Их үнэтэй</option>
             <option value="bestRated">Өндөр үнэлгээтэй</option>
             <option value="mostRecent">Шинээр нэмэгдсэн</option>
           </select>
-          <input type="text" placeholder="Хайх" aria-label="Хайх утга оруулах" />
-          <button class="search-button" type="submit" value="Search">
+          <input type="text" placeholder="Хайх" />
+          <button class="search-button">
             <img src="./svg/search.svg" alt="Search" />
           </button>
         </div>
       </div>
       <nav class="header-icons">
-        <a href="login.html"><img src="./svg/user.svg" alt="User" /></a>
-        <a href="chat.html"><img src="./svg/chat.svg" alt="Chat"/></a>
+        <a href="login.html"><img src="./svg/user.svg" alt="Хэрэглэгчийн хуудас"/></a>
+        <a href="chat.html"><img src="./svg/chat.svg" alt="Хэрэглэгчийн чат"/></a>
         <bookmark-component></bookmark-component>
         <basket-component>
           Basket (<span id="basket-count">0</span>)
@@ -47,8 +45,7 @@
     <main class="container">
       <user-list></user-list>
 
-      <section class="book-section container"></section>
-      <section class="latest-book-section"></section>
+      <book-module></book-module>
 
       <book-module></book-module>
 
@@ -73,11 +70,11 @@
               ></textarea>
             </div>
             <button
-              class="back-button" type="submit" value="Sent"
-              onclick="window.location.href='success.html';"
-            >
-              Илгээх
-            </button>
+        type="submit"
+        class="back-button"
+      >
+        Илгээх
+      </button>
           </form>
         </div>
       </section>

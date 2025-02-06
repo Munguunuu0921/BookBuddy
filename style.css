@@ -117,6 +117,18 @@ body.dark-mode {
     margin-left: 15px;
   }
   
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
   header .header-icons img {
     width: 24px;
     height: 24px;
@@ -547,6 +559,7 @@ h2 {
 .blog-icons a:hover {
   color: var(--color-accent);
 }
+
   /* Pricing */
   .pricing-section {
     margin-top: 40px;
@@ -576,6 +589,7 @@ h2 {
     border-radius: 10px;
     background-color: var(--color-white);
   }
+
   
   /* Top Members */
   .top-members {
